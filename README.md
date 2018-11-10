@@ -5,19 +5,12 @@ Python 3.6.6 64-bit or newer version (https://www.python.org/downloads)
 
 ## Installing
 
-### Pip
-If you do not have pip, you can install it by running
+### Anaconda distribution (Windows)
 
-```
-python get-pip.py
-```
+Python 3.7 version 64-Bit Graphical Installer https://www.anaconda.com/download/
 
 ### Python requirements
-Once pip is installed you can download the requirements for this project with
-
-```
-pip install -r requirements.txt
-```
+Once Anaconda is installed you can download the requirements for this project using the Anaconda Navigator
 
 ## Running
 
