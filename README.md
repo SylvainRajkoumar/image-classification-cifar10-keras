@@ -28,7 +28,15 @@ keras-gpu
 ```
 
 ## Running
+You can open the terminal from the Anaconda Navigator :
+
+![capture_2](https://user-images.githubusercontent.com/26735996/48300670-0c020180-e4e2-11e8-9ff7-ce76411c9da4.PNG)
+
+Or you can launch your IDE / Text Editor : 
+
+![capture_3](https://user-images.githubusercontent.com/26735996/48300709-7d41b480-e4e2-11e8-8f22-d920d67d0c64.PNG)
 
 ```
 python main.py
 ```
+
