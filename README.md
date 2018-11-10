@@ -12,7 +12,7 @@ Example for tensorflow-gpu :
 
 ![capture](https://user-images.githubusercontent.com/26735996/48300550-0c010200-e4e0-11e8-8682-6cd7cf017bd1.PNG)
 
-You'll need to do the same thing for the following packages :   
+You'll need to do the same for the following packages :   
 ```
 numpy  
 opencv  
