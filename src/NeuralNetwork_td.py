@@ -32,7 +32,7 @@ class NeuralNetwork(object):
 
         print("Création du modèle réussite")
 
-    def train(self, train_data, train_labels, epochs):
+    def train(self, train_data, train_labels, eval_data, eval_labels, epochs):
         """Train the keras model
         
         Arguments:
@@ -41,39 +41,50 @@ class NeuralNetwork(object):
             epochs {int} -- The number of epochs to train for
         """
         
-        # datagen = keras.preprocessing.image.ImageDataGenerator(
-        #     featurewise_center=True,
-        #     featurewise_std_normalization=True,
-        #     rotation_range=20,
-        #     width_shift_range=0.2,
-        #     height_shift_range=0.2,
-        #     horizontal_flip=True)
+        datagen = keras.preprocessing.image.ImageDataGenerator(
+            featurewise_center=True,
+            featurewise_std_normalization=True,
+            rotation_range=20,
+            width_shift_range=0.2,
+            height_shift_range=0.2,
+            horizontal_flip=True)
 
-        # datagen.fit(train_data)
-        # self.model.fit_generator(datagen.flow(train_data, train_labels, batch_size=128),
-        #             steps_per_epoch=len(train_data) / 128, epochs=epochs)
+        datagen.fit(train_data)
+        self.model.fit_generator(datagen.flow(train_data, train_labels, batch_size=128),
+                    steps_per_epoch=len(train_data) / 128, epochs=epochs)
 
-        print("Entrainement du réseau de neurones en cours ... ")
-        history = self.model.fit(train_data, train_labels, epochs = epochs, batch_size=128, validation_split=0.11)
-        print("Entrainement terminé")
+        for e in range(epochs):
+            batches = 0
+            for x_batch, y_batch in datagen.flow(train_data, train_labels, batch_size=128):
+                self.model.fit(x_batch, y_batch)
+                print(self.evaluate(eval_data, eval_labels))
+                batches += 1
+                if batches >= len(train_data) / 128:
+                    # we need to break the loop by hand because
+                    # the generator loops indefinitely
+                    break
 
-        print(history.history.keys())
+        # print("Entrainement du réseau de neurones en cours ... ")
+        # history = self.model.fit(train_data, train_labels, epochs = epochs, batch_size=128, validation_split=0.11)
+        # print("Entrainement terminé")
 
-        plt.plot(history.history['acc'])
-        plt.plot(history.history['val_acc'])
-        plt.title('model accuracy')
-        plt.ylabel('accuracy')
-        plt.xlabel('epoch')
-        plt.legend(['train', 'test'], loc='upper left')
-        plt.show()
+        # print(history.history.keys())
 
-        plt.plot(history.history['loss'])
-        plt.plot(history.history['val_loss'])
-        plt.title('model loss')
-        plt.ylabel('loss')
-        plt.xlabel('epoch')
-        plt.legend(['train', 'test'], loc='upper left')
-        plt.show()
+        # plt.plot(history.history['acc'])
+        # plt.plot(history.history['val_acc'])
+        # plt.title('model accuracy')
+        # plt.ylabel('accuracy')
+        # plt.xlabel('epoch')
+        # plt.legend(['train', 'test'], loc='upper left')
+        # plt.show()
+
+        # plt.plot(history.history['loss'])
+        # plt.plot(history.history['val_loss'])
+        # plt.title('model loss')
+        # plt.ylabel('loss')
+        # plt.xlabel('epoch')
+        # plt.legend(['train', 'test'], loc='upper left')
+        # plt.show()
 
 
     def evaluate(self, eval_data, eval_labels):
