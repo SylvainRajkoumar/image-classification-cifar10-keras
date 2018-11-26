@@ -13,7 +13,7 @@ class NeuralNetwork(object):
     def createModel(self):
         print("Création du modèle ...")
         self.model = keras.Sequential()
-        # keras.preprocessing.Image.ImageDataGenerator()
+
         self.model.add(keras.layers.Conv2D(filters=32, kernel_size=5, strides=1, padding="same",
                                             input_shape=(32, 32, 3), activation=tf.nn.relu, data_format='channels_last')) #CONV1
         self.model.add(keras.layers.MaxPool2D(pool_size=3, strides=2, padding="same")) #POOL1
@@ -40,8 +40,21 @@ class NeuralNetwork(object):
             train_labels {np.array} -- The training labels
             epochs {int} -- The number of epochs to train for
         """
+        
+        # datagen = keras.preprocessing.image.ImageDataGenerator(
+        #     featurewise_center=True,
+        #     featurewise_std_normalization=True,
+        #     rotation_range=20,
+        #     width_shift_range=0.2,
+        #     height_shift_range=0.2,
+        #     horizontal_flip=True)
+
+        # datagen.fit(train_data)
+        # self.model.fit_generator(datagen.flow(train_data, train_labels, batch_size=128),
+        #             steps_per_epoch=len(train_data) / 128, epochs=epochs)
+
         print("Entrainement du réseau de neurones en cours ... ")
-        history = self.model.fit(train_data, train_labels, epochs = epochs, batch_size=128, validation_split=0.33)
+        history = self.model.fit(train_data, train_labels, epochs = epochs, batch_size=128, validation_split=0.11)
         print("Entrainement terminé")
 
         print(history.history.keys())

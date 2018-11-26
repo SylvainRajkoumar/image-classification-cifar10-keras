@@ -8,11 +8,11 @@ def main():
     b = NeuralNetwork()
     b.createModel()
     
-    # b.train(a.train_data, a.train_labels, epochs = 100)
-    # b.saveModel()
+    b.train(a.train_data, a.train_labels, epochs = 10)
+    # b.saveModel("test.h5")
 
-    b.loadModel()
-    print("Evaluate : {}".format(b.evaluate(a.eval_data, a.eval_labels)))
+    # b.loadModel()
+    # print("Evaluate : {}".format(b.evaluate(a.eval_data, a.eval_labels)))
 
 if __name__ == "__main__":
     main()
