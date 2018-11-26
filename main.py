@@ -6,7 +6,7 @@ def main():
     a = DataManager()
     a.loadData()
     b = NeuralNetwork()
-    b.createModel()
+    # b.createModel()
     
     b.train(a.train_data, a.train_labels, epochs = 10)
     # b.saveModel("test.h5")
