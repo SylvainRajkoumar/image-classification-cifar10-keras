@@ -1,7 +1,10 @@
 # image-classification-cifar10-keras
 Initiation project on artificial intelligence applied to computer vision.
 The goal is to translate the structure of a neural network initially implemented under cuda-convnet for use under Keras.
-We achieved ~75% accuracy.
+We achieved ~75% accuracy.  
+![accuracy_100epochs](https://user-images.githubusercontent.com/26735996/48999460-07cb1a80-f157-11e8-95b1-75204b3eabf1.png)
+![loss_100epochs](https://user-images.githubusercontent.com/26735996/48999435-faae2b80-f156-11e8-8e8d-21f6fa6ec073.png)
+
 
 ## Prerequisites
 Python 3.7 version 64-Bit Graphical Installer https://www.anaconda.com/download/
