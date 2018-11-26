@@ -8,8 +8,8 @@ def main():
     b = NeuralNetwork()
     b.createModel()
     
-    b.train(a.train_data, a.train_labels, a.eval_data, a.eval_labels, epochs = 30)
-    # b.saveModel("test.h5")
+    b.train(a.train_data, a.train_labels, a.eval_data, a.eval_labels, epochs = 100)
+    b.saveModel("test.h5")
 
     # b.loadModel()
     # print("Evaluate : {}".format(b.evaluate(a.eval_data, a.eval_labels)))

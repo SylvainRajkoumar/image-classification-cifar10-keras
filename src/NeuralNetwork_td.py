@@ -17,6 +17,7 @@ class NeuralNetwork(object):
         self.model.add(keras.layers.Conv2D(filters=32, kernel_size=5, strides=1, padding="same",
                                             input_shape=(32, 32, 3), activation=tf.nn.relu, data_format='channels_last')) #CONV1
         self.model.add(keras.layers.MaxPool2D(pool_size=3, strides=2, padding="same")) #POOL1
+        self.model.add(keras.layers.Dropout(0.5))
         self.model.add(keras.layers.BatchNormalization()) #RNORM1
         self.model.add(keras.layers.Conv2D(filters=32, kernel_size=5, strides=1, padding="same", activation=tf.nn.relu)) #CONV2
         self.model.add(keras.layers.AveragePooling2D(pool_size=3, strides=2)) #POOL2
